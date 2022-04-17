@@ -4,7 +4,10 @@
  * @param {string} string
  * @returns {string}
  */
-export const replaceZAndVFromString = (string) => {};
+export const replaceZAndVFromString = (string) => {
+	return string.replace('z', '*').replace('v', '*');
+	// return string.replace(/z|v/gi, '*');
+};
 
 /**
  * Функция должна принять 3 аргумента и все строки. Мы передаем строку,
@@ -16,7 +19,7 @@ export const replaceZAndVFromString = (string) => {};
  * @param {string} newWord
  * @returns {string}
  */
-export const changeWord = (string, word, newWord) => {};
+export const changeWord = (string, word, newWord) => string.replace(word, newWord);
 
 /**
  * Должна вернуть строку(1 аргумент) на обрезанную по длине(2 аргумент, число)
@@ -24,7 +27,7 @@ export const changeWord = (string, word, newWord) => {};
  * @param {number} length
  * @returns {string}
  */
-export const truncate = (string, length) => {};
+export const truncate = (string, length) => string.substring(0, length);
 
 /**
  * Принимает строку в первом аргументе, и символ во втором
@@ -37,7 +40,15 @@ export const truncate = (string, length) => {};
  * @param {string} symbol
  * @returns {number}
  */
-export const quantityOfSymbols = (string, symbol) => {};
+export const quantityOfSymbols = (string, symbol) => {
+	let counter = 0;
+	for (let i = 0; i < string.length; i++) {
+		if (string[i].toLowerCase() === symbol.toLowerCase()) {
+			counter++;
+		}
+	}
+	return counter;
+};
 
 /**
  * Принимает строку в первом аргументе, и символ во втором
@@ -54,4 +65,19 @@ export const quantityOfSymbols = (string, symbol) => {};
  * @param {string} symbol
  * @returns {number}
  */
-export const quantityOfSymbolsWithIndexOf = (string, symbol) => {};
+export const quantityOfSymbolsWithIndexOf = (string, symbol) => {
+	symbol = symbol.toLowerCase();
+
+	let counter = 0;
+	let resultOfSearch = string.toLowerCase().indexOf(symbol);
+
+	while (true) {
+		if (resultOfSearch !== -1) {
+			resultOfSearch = string.toLowerCase().indexOf(symbol, resultOfSearch + 1);
+			counter++;
+		} else {
+			break;
+		}
+	}
+	return counter;
+};
