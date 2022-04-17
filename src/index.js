@@ -5,7 +5,7 @@
  * @returns {string}
  */
 export const replaceZAndVFromString = (string) => {
-	return string.replace('z', '*').replace('v', '*');
+	return string.replaceAll('z', '*').replaceAll('v', '*');
 	// return string.replace(/z|v/gi, '*');
 };
 
